@@ -28,3 +28,19 @@ class Solution {
         return result.toString();
     }
 }
+
+
+StartsWith() :-
+
+The startsWith method in Java is a String class method that checks whether a given string starts with a specified prefix. It returns true if the string starts with the specified prefix, and false otherwise.
+
+Here's the signature of the startsWith method:
+
+boolean startsWith(String prefix)
+Parameters:
+
+prefix: The prefix to check for at the beginning of the string.
+Return Value:
+
+true if the string starts with the specified prefix.
+false otherwise.

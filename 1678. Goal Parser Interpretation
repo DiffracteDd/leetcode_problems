@@ -1,0 +1,30 @@
+class Solution {
+    public String interpret(String command) {
+        ArrayList<String> strList = new ArrayList<>();
+        //String s = new String;
+        for(int i=0;i<command.length();i++)
+        {
+            if(command.charAt(i)=='G')
+            {
+                strList.add("G");
+            }
+            else if (i+1<command.length() && command.startsWith("()",i) )
+            {
+                i=i+1;
+                strList.add("o");
+            }
+            else if (i+3<command.length() && command.startsWith("(al)",i))
+            {
+                i=i+3;
+                strList.add("al");
+            }
+
+        }
+        StringBuilder result = new StringBuilder();
+        for (String str : strList) {
+            result.append(str);
+        }
+        
+        return result.toString();
+    }
+}

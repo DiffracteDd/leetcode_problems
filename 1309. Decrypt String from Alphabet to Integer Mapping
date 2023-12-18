@@ -1,0 +1,41 @@
+class Solution {
+    public String freqAlphabets(String s) {
+        StringBuilder sb = new StringBuilder();
+        int i=0;
+        while(i<s.length())
+        {
+            if(i+2 < s.length() && s.charAt(i+2)=='#')
+            {
+                int n = Integer.parseInt(s.substring(i,i+2));
+                char l = (char) ('a'+n -1);
+                sb.append(l);
+                i=i+3;
+            }
+            else
+            {
+                int n = Character.getNumericValue(s.charAt(i));
+                char l = (char) ('a'+n -1);
+                sb.append(l);
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+}
+
+
+Integer.parseInt(String s) is a method in Java that parses the string argument as a signed decimal integer. It returns an integer, and it throws a NumberFormatException if the string does not contain a valid integer.
+String s = "42";
+int number = Integer.parseInt(s);
+// number now contains the integer value 42
+
+Character.getNumericValue(char ch) is a method in Java that returns the numeric value of the character ch. This method can interpret characters representing digits in various bases (e.g., decimal, hexadecimal).
+If the character does not represent a digit, -1 is returned.
+
+char ch = '5';
+int numericValue = Character.getNumericValue(ch);
+// numericValue now contains the integer value 5
+
+
+In the given freqAlphabets function, Integer.parseInt is used to convert the two-digit substring to an integer, and Character.getNumericValue is used to convert the single-digit character to its numeric value.
+These values are then used to calculate the corresponding leter

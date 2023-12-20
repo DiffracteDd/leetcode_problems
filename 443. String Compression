@@ -1,0 +1,28 @@
+class Solution {
+    public int compress(char[] chars) {
+        StringBuilder sb = new StringBuilder();
+        int n = chars.length;
+        int i = 0;
+        
+        while (i < n) {
+            char ch = chars[i];
+            sb.append(ch);
+            int x = 1; 
+            
+            while (i + 1 < n && chars[i + 1] == ch) {
+                x++;
+                i++;
+            }
+
+            if (x > 1) {
+                sb.append(x);
+            }
+            
+            i++;
+        }
+        String compressed = sb.toString();
+        char[] compressedChars = compressed.toCharArray();
+        System.arraycopy(compressedChars, 0, chars, 0, compressedChars.length);
+        return compressedChars.length;
+    }
+}

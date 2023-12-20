@@ -1,0 +1,29 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        if(prices.length<2)
+        {
+            return money;
+        }
+        else
+        {
+        for(int i=0;i<prices.length;i++)
+        {
+            for(int j=i+1;j<prices.length;j++)
+            {
+                if(prices[i]>prices[j])
+                {
+                    int temp = prices[i];
+                    prices[i]=prices[j];
+                    prices[j]=temp;
+                }
+            }
+        }
+        if(prices[0]+prices[1]<=money)
+        {
+            return money - (prices[0]+prices[1]);
+        }
+        else
+        return money;
+        }        
+    }
+}

@@ -1,0 +1,54 @@
+// this code passed 219 out of 228 test cases 
+class Solution {
+    public List<Integer> beautifulIndices(String s, String a, String b, int k) {
+        int l1 = s.length() - a.length();
+        int l2 = s.length() - b.length();
+        
+        List<Integer> indexa = new ArrayList<>();
+        int current1 = s.indexOf(a);
+        
+         while(current1 != -1)
+         {
+            indexa.add(current1);
+            current1 = s.indexOf(a,current1+1);
+         }
+        
+        List<Integer> indexb = new ArrayList<>();
+        int current2 = s.indexOf(b);
+        
+        while(current2 != -1)
+        {
+            indexb.add(current2);
+            current2 = s.indexOf(b,current2+1);
+        }
+        
+        List<Integer> bt = new ArrayList<>();
+        
+        for(int i: indexa)
+        {
+            if(i<=s.length() - a.length())
+            {
+                for(int j: indexb)
+                {
+                    if(j<=s.length()-b.length())
+                    {
+                        if(Math.abs(j-i)<=k)
+                        {
+                            bt.add(i);
+                        }
+                    }
+                }
+            }
+        }
+        Set<Integer> set = new HashSet<>(bt);
+        List<Integer> resultList = new ArrayList<>(set);
+        Collections.sort(resultList);
+        return resultList;
+    }
+}
+
+
+
+
+
+

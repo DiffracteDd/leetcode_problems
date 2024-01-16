@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.Collections;  // Correct import statement for Collections class
+
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        ArrayList<Integer> greed = new ArrayList<>();
+        ArrayList<Integer> satisfaction = new ArrayList<>();
+        
+        for (int value : g) {
+            greed.add(value);
+        }
+
+        for (int value : s) {
+            satisfaction.add(value);
+        }
+        
+        Collections.sort(greed);  // Corrected import statement and method name
+        Collections.sort(satisfaction);
+        
+        int n = Math.min(greed.size(), satisfaction.size());
+        int x = 0, y = 0, c = 0;
+        while (x < greed.size() && y < satisfaction.size()) {
+            if (greed.get(x) <= satisfaction.get(y)) {
+                c++;
+                x++;
+            }
+            y++;
+        }
+        return c;
+    }
+}

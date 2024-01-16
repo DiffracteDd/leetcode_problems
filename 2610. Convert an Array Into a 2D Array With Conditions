@@ -1,0 +1,45 @@
+class Solution {
+    public List<List<Integer>> findMatrix(int[] nums) {
+        HashMap<Integer,Integer> map = new HashMap <>();
+        HashSet<Integer> set = new HashSet<>();
+        for(int i =0;i<nums.length;i++)
+        {
+            if(map.containsKey(nums[i]))
+            {
+                map.put(nums[i],map.get(nums[i])+1);
+            }
+            else
+            {
+                map.put(nums[i],1);
+            }
+            set.add(nums[i]);
+        }
+        
+        int max = Integer.MIN_VALUE;
+        for(Map.Entry<Integer,Integer> m : map.entrySet())
+        {
+            int x=m.getKey();
+            int y=m.getValue();
+            if(y>max)
+            {
+                max=y;
+            }
+        }
+        
+        // Create a list of lists to represent the matrix
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < max; i++) {
+            result.add(new ArrayList<>());
+        }
+
+        // Populate the matrix
+        for (int num : set) {
+            int frequency = map.get(num);
+            for (int i = 0; i < frequency; i++) {
+                result.get(i).add(num);
+            }
+        }
+
+        return result;
+    }
+}

@@ -1,0 +1,32 @@
+class Solution {
+    public int findCenter(int[][] edges) {
+        Stack<Integer> st = new Stack<>();
+        for(int i=0;i<edges[0].length;i++)
+        {
+            for(int j=0;j<edges[1].length;j++)
+            {
+                st.push(edges[i][j]);
+            }
+        }
+        HashMap<Integer,Integer> map = new HashMap<>();
+        while(!st.isEmpty())
+        {
+            int x=st.pop();
+            map.put(x,map.getOrDefault(x,0)+1);
+        }
+        int max =0;
+        int v=0;
+        for(Map.Entry<Integer,Integer> m: map.entrySet())
+        {
+            int k = m.getKey();
+            int l = m.getValue();
+            if(max<l)
+            {
+                max=l;
+                v=k;
+            }
+        }
+        return v;
+        
+    }
+}

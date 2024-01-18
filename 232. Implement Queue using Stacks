@@ -1,0 +1,35 @@
+import java.util.Stack;
+
+class MyQueue {
+    Stack<Integer> mainStack;
+    Stack<Integer> auxiliaryStack;
+
+    public MyQueue() {
+        mainStack = new Stack<>();
+        auxiliaryStack = new Stack<>();
+    }
+
+    public void push(int x) {
+        mainStack.push(x);
+    }
+
+    public int pop() {
+        peek();
+        return auxiliaryStack.pop();
+    }
+
+    public int peek() {
+        if (auxiliaryStack.isEmpty()) {
+            while (!mainStack.isEmpty()) {
+                auxiliaryStack.push(mainStack.pop());
+            }
+        }
+        return auxiliaryStack.peek();
+    }
+
+    public boolean empty() {
+    return mainStack.isEmpty() && auxiliaryStack.isEmpty();
+}
+
+    
+}
